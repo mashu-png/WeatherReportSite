@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Weather</title>
+</head>
+<body>
+    <div id="headTitle">
+        <h1 id="FrontTitle" class="headerText"></h1>
+    </div>
+    <div id="main" class="main">
+        <div id="Date">
+            <h1 class="date"></h1>
+        </div>
+        <div id="Clocks"></div>
+        <div id="main_Text">
+            <h1 id="MainTitle" class="MainText"></h1>
+        </div>
+        <div id="WeatherTitle">
+            <h1 id="WeatherText"></h1>
+        </div>
+        <div class="WeatherBox">
+            <h2 id="Weather" class="WeatherSUbTitle"></h2>
+            <p id="WeatherComment" class="Weathers"></p>
+        </div>
+        <div class="SectionBorder"></div>
+        <div class="windsBox">
+            <h2 id="WindsTitle" class="windsSubTitle"></h2>
+            <p id="windsComment" class="WindsComment"></p>
+        </div>
+        <div class="SectionBorder"></div>
+        <div id="Temp">
+            <h2 id="TempTitle" class="TempText"></h2>
+        </div>
+        <div class="TempBox">
+            <div class="SebuAera" id="Sebu"></div>
+            <div class="TempOutput">
+                <p id="TempMax" class="T-Max"></p>
+                <p id="TempMin" class="T-Min"></p>
+            </div>
+            <div class="TobuArea" id="Tobu"></div>
+            <div class="TempOutput">
+                <p id="TempMax1" class="T-Max"></p>
+                <p id="TempMin1" class="T-Min"></p>
+            </div>
+        </div>
+        <div class="SectionBorder"></div>
+        <div id="precip">
+            <h2 id="precipTitle" class="precipText"></h2>
+        </div>
+        <div class="precip">
+            <p id="precipMorning" class="preText"></p>
+            <p id="precipNoon" class="preText"></p>
+            <p id="precipNight" class="preText"></p>
+        </div>
+        <div id="Other">
+            <h2 id="OtherTitle" class="OtherText"></h2>
+        </div> 
+    </div>
+</body>
+<script src="JS/Layout.js"></script>
+<script src="JS/XMLSystem.js"></script>
+<script src="JS/Time.js"></script>
+</html>

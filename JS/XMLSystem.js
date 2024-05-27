@@ -1,0 +1,96 @@
+(function () {
+    const title = document.getElementById('FrontTitle');
+    const weather = document.getElementById('Weather')
+    const weatherTitle = document.getElementById('WeatherText');
+    const WeatherComment = document.getElementById('WeatherComment');
+    const WindsTitle = document.getElementById('WindsTitle');
+    const windsComment = document.getElementById('windsComment');
+    const TempText= document.getElementById('TempTitle');
+    const TempSebu = document.getElementById('Sebu');
+    const WeatherCommnet = document.getElementById('WeatherComment');
+    const TempMax = document.getElementById('TempMax');
+    const TempMin = document.getElementById('TempMin');
+    const precipTitle = document.getElementById('precipTitle');
+    const precipMorning = document.getElementById('precipMorning');
+    const precipNoon = document.getElementById('precipNoon')
+    const precipNight = document.getElementById('precipNight')
+
+
+    //const date = new Date();
+
+    main();
+    function main(){
+        WeatherAPI();
+    }
+    
+    /**
+     * https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json
+     * 愛知県 
+     * https://www.jma.go.jp/bosai/forecast/data/forecast/xxxxxx.json
+     * 
+     * 
+     */
+
+
+    
+    function WeatherAPI () {
+        const OpenWeastherAPIObj = {
+            Area : "aichi",
+            units : "metric",
+            Key : "e104e0fb1c97b78bc5a235b122a6b0ee",
+            lang : "ja"
+        }
+        const JMAAPI = {
+            URL: "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json",
+        }
+        //const OpenWeatherAPIUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + OpenWeastherAPIObj.Area + 
+        //                          "&units=" + OpenWeastherAPIObj.units + "&appid=" + OpenWeastherAPIObj.Key + "&lang=" + OpenWeastherAPIObj.lang
+        //console.log(OpenWeastherAPIObj.Area);
+    
+        fetch(JMAAPI.URL).then( function (response) {
+            return response.json();
+        }).then(function(Data) {
+            //コメントや都市名を取得
+            const CityName = Data[1].timeSeries[1].areas[0].area.name;
+            const WeatherComment1 = String(Data[0].timeSeries[0].areas[0].weathers[0]).replace(/　/g,"");
+            const WeatherComment2 = String(Data[0].timeSeries[0].areas[0].weathers[1]).replace(/　/g,"");
+            const WeatherComment3 = String(Data[0].timeSeries[0].areas[0].weathers[2]).replace(/　/g,"");
+            const windsComment1 = String(Data[0].timeSeries[0].areas[0].winds[0]).replace(/　/g,"");
+            const windsComment2 = String(Data[0].timeSeries[0].areas[0].winds[1]).replace(/　/g,"");
+            const windsComment3 = String(Data[0].timeSeries[0].areas[0].winds[2]).replace(/　/g,"");
+            console.log(windsComment1)
+            //平均気温取得
+            const AverageTemp_Max = Data[1].tempAverage.areas[0].max
+            const AverageTemp_Min = Data[1].tempAverage.areas[0].min
+            //降水確率取得
+            const precip_Morning = Data[0].timeSeries[1].areas[0].pops[0] /* 午前 */
+            const precip_Noon = Data[0].timeSeries[1].areas[0].pops[1] /* 昼　*/
+            const precip_Night = Data[0].timeSeries[1].areas[0].pops[2] /* 夜 */
+            console.log(precipMorning)
+            //ゲットしたデータを配列に格納
+            const GetData = [
+                CityName,WeatherComment1,WeatherComment2,WeatherComment3,windsComment1,windsComment2,windsComment3,
+                AverageTemp_Max,AverageTemp_Min,precip_Morning,precip_Noon,precip_Night
+            ]
+            DataJoin(GetData)
+            }
+        );
+    }
+
+    function DataJoin (WeatherData) {
+        title.innerHTML = "天気情報";
+        weatherTitle.innerHTML = WeatherData[0] + "市の詳細情報"
+        weather.innerHTML = "🌞天気🌞"
+        WeatherCommnet.innerHTML = "<marquee class='SlideStyle'>" +  WeatherData[2] + "</marquee>"
+        WindsTitle.innerHTML ="🌪風速情報🌪"
+        windsComment.innerHTML = "<marquee class='SlideStyle'>" + WeatherData[5] + "<marquee>";
+        TempText.innerHTML = "平均気温";
+        TempSebu.innerHTML = "愛知県西部";
+        TempMax.innerHTML = "🥵" +  WeatherData[7] + "℃";
+        TempMin.innerHTML = "🥶" + WeatherData[8] + "℃";
+        precipTitle.innerHTML = "☔降水確率☔";
+        precipMorning.innerHTML = "朝(6~12):" + WeatherData[9] + "%"
+        precipNoon.innerHTML = "昼(12~18):" + WeatherData[10] + "%"
+        precipNight.innerHTML = "夜(18~24):" + WeatherData[11]+ "%"
+    }    
+}());
