@@ -34,12 +34,6 @@
 
     
     function WeatherAPI () {
-        const OpenWeastherAPIObj = {
-            Area : "aichi",
-            units : "metric",
-            Key : "e104e0fb1c97b78bc5a235b122a6b0ee",
-            lang : "ja"
-        }
         const JMAAPI = {
             URL: "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json",
         }
@@ -81,9 +75,9 @@
         title.innerHTML = "天気情報";
         weatherTitle.innerHTML = WeatherData[0] + "市の詳細情報"
         weather.innerHTML = "🌞天気🌞"
-        WeatherCommnet.innerHTML = "<marquee class='SlideStyle'>" +  WeatherData[2] + "</marquee>"
+        WeatherCommnet.innerHTML = "<marquee class='SlideStyle'>" +  WeatherData[1] + "</marquee>"
         WindsTitle.innerHTML ="🌪風速情報🌪"
-        windsComment.innerHTML = "<marquee class='SlideStyle'>" + WeatherData[5] + "<marquee>";
+        windsComment.innerHTML = "<marquee class='SlideStyle'>" + WeatherData[4] + "</marquee>";
         TempText.innerHTML = "平均気温";
         TempSebu.innerHTML = "愛知県西部";
         TempMax.innerHTML = "🥵" +  WeatherData[7] + "℃";

@@ -6,10 +6,6 @@
     background-image: url(https://images.ctfassets.net/hrltx12pl8hq/6TIZLa1AKeBel0yVO7ReIn/1fc0e2fd9fcc6d66b3cc733aa2547e11/weather-images.jpg);
     padding: 0 0 0 0;
 }
-#Clocks{
-    border: 1px solid #000;
-    border-radius: 50px;
-}
 .WeatherSUbTitle{
     text-align: center;
     margin-bottom: 2.5%;
@@ -56,10 +52,6 @@
 .SlideStyle{
     font-weight: bold;
 }
-.footer{
-    background-color: #000;
-    border-radius: 75px;
-}
 #precipMorning{
     background-image: url(https://d3dtl2c4fx01rm.cloudfront.net/photos/members/kokusimusou/99f68ee4dee79efc23a149ff7f5c7098_3.jpg);
     background-position: 20%;
@@ -76,7 +68,23 @@
 .FujiwaraSoft{
     background-color: #000;
     text-align: center;
-    display: inline-grid;
+    display: block;
+    color: #fff;
+}
+
+.footer{
+    background-color: #000;
+}
+.Sponsors{
+    text-align: center;
+}
+.SponsorsTitle{
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+}
+.ImageSponsors{
+    mask-image: #fff;
 }
 .footerTitle{
     color: #fff;
