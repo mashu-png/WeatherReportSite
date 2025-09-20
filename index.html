@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/Timer.css">
     <title>Weather</title>
 </head>
 <body>
@@ -33,14 +32,12 @@
         </div>
         <div class="TempBox">
             <div class="SebuAera" id="Sebu"></div>
-            <div class="TempOutput">
-                <p id="TempMax" class="T-Max"></p>
-                <p id="TempMin" class="T-Min"></p>
-            </div>
-            <div class="TobuArea" id="Tobu"></div>
-            <div class="TempOutput">
-                <p id="TempMax1" class="T-Max"></p>
-                <p id="TempMin1" class="T-Min"></p>
+            <div class="VideoContainer-Wrapper">
+                <video src="/Video/TempBackground.mp4" muted autoplay loop playsinline></video>
+                <div class="TempOutput">
+                    <p id="TempMax" class="T-Max"></p>
+                    <p id="TempMin" class="T-Min"></p>
+                </div>
             </div>
         </div>
         <div class="SectionBorder"></div>
@@ -51,6 +48,23 @@
             <p id="precipMorning" class="preText"></p>
             <p id="precipNoon" class="preText"></p>
             <p id="precipNight" class="preText"></p>
+        </div>
+        <div class="SectionBorder"></div>
+        <div class="TempAverage">
+            <div class="AverageTitle" id="AverageTitle">
+                <div id="DecolationRandomIcons_Left" class="DecolationRandomIcons">&#128732;</div>
+                <div class="AverageTitleArea" id="AverageTitleArea"></div>
+                <div id="DecolationRandomIcons_Right" class="DecolationRandomIcons">&#10062;</div>
+            </div>
+            <div class="TempAverageArea">
+                <p class="TempAverageText" id="TempAverageTitleText"></p>
+                <p class="TempAverageText" id="TempAverageText"></p>
+            </div>
+            <div class="PrecipAverageArea">
+                <p class="PrecipAverageText" id="PrecipAverageTitleText"></p>
+                <p class="PrecipAverageText" id="PrecipAverageText"></p>
+            </div>
+        </div>
         </div>
         <div id="Other">
             <h2 id="OtherTitle" class="OtherText"></h2>
@@ -64,8 +78,9 @@
             <img src="Image/DG.png" alt="DG" class="DG" id="DG" width="50%" height="50%" >
             <p class="FujiwaraSoft">男子学園DG</p>
         </div>
-    </div>    
+    </div>
 </body>
 <script src="JS/System.js"></script>
 <script src="JS/XMLSystem.js"></script>
+<script src="JS/DecolationIcons.js"></script>
 </html>

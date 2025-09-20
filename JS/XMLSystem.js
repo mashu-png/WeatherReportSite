@@ -13,8 +13,13 @@
     const precipTitle = document.getElementById('precipTitle');
     const precipMorning = document.getElementById('precipMorning');
     const precipNoon = document.getElementById('precipNoon')
-    const precipNight = document.getElementById('precipNight')
-
+    const precipNight = document.getElementById('precipNight');
+    const AverageTitle = document.getElementById('AverageTitle');
+    const AverageTitleArea = document.getElementById('AverageTitleArea')
+    const TempAverageTitleElements = document.getElementById('TempAverageTitleText');
+    const TempAverageText = document.getElementById('TempAverageText')
+    const PrecipAverageTitleElements = document.getElementById('PrecipAverageTitleText');
+    const PrecipAverageText = document.getElementById('PrecipAverageText');
 
     //const date = new Date();
 
@@ -71,20 +76,42 @@
         );
     }
 
+    function AverageCalc(MaxTemp,MinTemp,PrecipMorning,PrecipNoon,PrecipNight){
+        const Temps = [MaxTemp,MinTemp];
+        const Precip = [PrecipMorning,PrecipNoon,PrecipNight]
+
+        const TempAverage = Math.floor((Number(Temps[0]) +  Number(Temps[1])) / 2)
+        const PrecipAverage = Math.floor((Number(Precip[0]) + Number(Precip[1]) + Number(Precip[2])) / 3) 
+
+        console.log(MaxTemp,MinTemp,PrecipMorning,PrecipNoon,PrecipNight)
+        console.log(TempAverage,PrecipAverage)
+
+        
+        const Averages = [TempAverage,PrecipAverage]
+        return Averages;
+    }
+
+
     function DataJoin (WeatherData) {
+        const Average = AverageCalc(WeatherData[7],WeatherData[8],WeatherData[9],WeatherData[10],WeatherData[11]);
         title.innerHTML = "天気情報";
         weatherTitle.innerHTML = WeatherData[0] + "市の詳細情報"
         weather.innerHTML = "🌞天気🌞"
         WeatherCommnet.innerHTML = "<marquee class='SlideStyle'>" +  WeatherData[1] + "</marquee>"
         WindsTitle.innerHTML ="🌪風速情報🌪"
         windsComment.innerHTML = "<marquee class='SlideStyle'>" + WeatherData[4] + "</marquee>";
-        TempText.innerHTML = "平均気温";
+        TempText.innerHTML = "気温";
         TempSebu.innerHTML = "愛知県西部";
         TempMax.innerHTML = "🥵" +  WeatherData[7] + "℃";
         TempMin.innerHTML = "🥶" + WeatherData[8] + "℃";
         precipTitle.innerHTML = "☔降水確率☔";
-        precipMorning.innerHTML = "朝(6~12):" + WeatherData[9] + "%"
-        precipNoon.innerHTML = "昼(12~18):" + WeatherData[10] + "%"
-        precipNight.innerHTML = "夜(18~24):" + WeatherData[11]+ "%"
-    }    
+        precipMorning.innerHTML = "朝(6~12):" + WeatherData[9] + "%";
+        precipNoon.innerHTML = "昼(12~18):" + WeatherData[10] + "%";
+        precipNight.innerHTML = "夜(18~24):" + WeatherData[11]+ "%";
+        AverageTitleArea.innerHTML = "平均値";
+        TempAverageTitleElements.innerHTML = "平均気温:";
+        TempAverageText.innerHTML = Average[0] + "℃";
+        PrecipAverageTitleElements.innerHTML = "平均降水確率:";
+        PrecipAverageText.innerHTML = Average[1] + "%";
+    }
 }());
